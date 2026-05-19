@@ -16,6 +16,11 @@ dist-ssr
 # Devin local skills/config (не коммитим в репо проекта)
 .devin/
 
+# Локальные скриншоты для обсуждения багов (не часть проекта)
+/android_screen*
+/screenshot*
+/screen-*
+
 # Editor
 .vscode/*
 !.vscode/extensions.json

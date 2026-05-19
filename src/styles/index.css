@@ -44,6 +44,9 @@
       radial-gradient(ellipse at top, rgba(40, 60, 120, 0.45) 0%, rgba(7, 9, 20, 0) 60%),
       radial-gradient(circle at 20% 80%, rgba(200, 16, 46, 0.1) 0%, rgba(7, 9, 20, 0) 50%);
     min-height: 100vh;
+    /* Защита от горизонтального скролла на мобильных, если какой-то
+       вложенный элемент случайно вылезет за вьюпорт. */
+    overflow-x: hidden;
   }
 
   h1,
