@@ -13,31 +13,10 @@
 Vite · React 18 · TypeScript · Tailwind CSS · React Router (HashRouter) ·
 Three.js + @react-three/fiber/drei · Leaflet + react-leaflet · Tone.js
 
-## Локальный запуск
-
-```bash
-npm install
-npm run dev
-```
-
-Открыть http://localhost:5173
-
-## Сборка и проверка
-
-```bash
-npm run typecheck
-npm run build
-npm run preview
-```
 
 ## Деплой
 
-Автоматически на GitHub Pages через `.github/workflows/deploy.yml` при пуше в `main`.
-
 URL после деплоя: https://valfha.github.io/History_project_gagarin/
-
-> Перед первым деплоем нужно один раз включить GitHub Pages:
-> **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
 ## Источники
 
