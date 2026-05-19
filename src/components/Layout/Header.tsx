@@ -68,7 +68,7 @@ export default function Header() {
         {/* Кнопка-гамбургер (< sm) */}
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded border border-white/10 text-ink-soft transition hover:border-soviet-red/60 hover:text-ink sm:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded border border-white/25 text-ink transition hover:border-soviet-red/60 hover:text-soviet-gold sm:hidden"
           aria-expanded={isOpen}
           aria-controls="mobile-nav"
           aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
