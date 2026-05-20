@@ -18,8 +18,18 @@ dist-ssr
 
 # Локальные скриншоты для обсуждения багов (не часть проекта)
 /android_screen*
+/lap_screen*
 /screenshot*
 /screen-*
+/error*.jpg
+/load_er*.jpg
+
+# Локальные дамп-файлы для переноса контекста между сессиями Devin
+SESSION_HANDOFF*.txt
+/_dump*.txt
+
+# Локальные документы (отчёты, заметки) — не часть кода проекта
+*.docx
 
 # Editor
 .vscode/*

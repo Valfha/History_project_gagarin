@@ -166,6 +166,104 @@ export const SOURCES: ReadonlyArray<Source> = [
     category: 'media',
     covers: 'Директива Вершинина 11.01.1960, начальник ЦПК Е. А. Карпов.',
   },
+
+  // --- Раздел «Полёт» (Stage 2) ---
+  {
+    id: 16,
+    title: 'Восток-1',
+    publisher: 'Википедия (русская)',
+    url: 'https://ru.wikipedia.org/wiki/Восток-1',
+    category: 'encyclopedia',
+    covers:
+      'Хронология полёта в МСК, параметры орбиты, история разделения отсеков.',
+  },
+  {
+    id: 17,
+    title: 'Хроника космического полёта Юрия Гагарина',
+    publisher: 'РИА Новости (2011)',
+    url: 'https://ria.ru/20110412/363270812.html',
+    category: 'media',
+    covers:
+      'Поминутный таймлайн в МСК: подъём, старт, орбитальные сеансы, посадка.',
+  },
+  {
+    id: 18,
+    title: 'The flight of Vostok 1',
+    publisher: 'European Space Agency (ESA)',
+    url: 'http://www.esa.int/SPECIALS/Gagarin/SEMH5H3UFLG_2.html',
+    category: 'agency',
+    covers: 'Таймлайн в UTC и T+, тексты переговоров с английскими переводами.',
+  },
+  {
+    id: 19,
+    title: 'Первый космический полёт',
+    publisher: 'Хроно.ру',
+    url: 'http://www.hrono.ru/sobyt/1900sob/19610412.php',
+    category: 'media',
+    covers: 'Сводка событий 12 апреля 1961 г.',
+  },
+  {
+    id: 20,
+    title: 'Vostok 1',
+    publisher: 'Wikipedia (English)',
+    url: 'https://en.wikipedia.org/wiki/Vostok_1',
+    category: 'encyclopedia',
+    covers: 'Кросс-чек хронологии и переговоров для триангуляции.',
+  },
+  {
+    id: 21,
+    title: 'Vostok 1 on Spacelog (CC BY)',
+    publisher: 'Spacelog Project',
+    url: 'https://vostok1.spacelog.org/',
+    category: 'archive',
+    covers:
+      'Расшифровка переговоров с таймкодами, синхронизированная с фазами полёта.',
+  },
+  {
+    id: 22,
+    title: 'Записи переговоров между Ю. Гагариным и пунктами управления полётами',
+    publisher: 'Coldwar.ru (электронная публикация документа АП РФ)',
+    url: 'http://www.coldwar.ru/arms_race/iniciativa/zapisi-peregovorov-s-gagarinom.php',
+    category: 'archive',
+    covers:
+      'Полная стенограмма УКВ- и КВ-переговоров; позывные «Кедр», «Заря-1»,«Заря-2», «Заря-3», «Весна».',
+  },
+  {
+    id: 23,
+    title:
+      'Запись переговоров Ю. А. Гагарина с пунктами управления от посадки в кабину до приземления, 12 апреля 1961',
+    publisher:
+      'Архив Президента РФ. Ф. 3, Оп. 47, Д. 278, Л. 178–203 (ЭБИД)',
+    url: 'https://docs.historyrussia.org/ru/nodes/481443',
+    category: 'archive',
+    covers:
+      'Первоисточник стенограммы. Опубликован в кн. «Первый пилотируемый полёт» (М., Родина МЕДИА, 2011).',
+  },
+  {
+    id: 24,
+    title: "Unknown Parts of Cosmonaut Gagarin's Conversations With Ground Control",
+    publisher: 'Sputnik International (2016)',
+    url: 'https://en.ria.ru/20160412/gagarin-conversation-1037899659.html',
+    category: 'media',
+    covers: 'Цитаты из стенограммы — Королёв, тюбики, общая обстановка на Земле.',
+  },
+  {
+    id: 25,
+    title: 'File:Gagarin-Poyekhali.ogg — Wikimedia Commons',
+    publisher: 'Wikimedia Commons (Public Domain)',
+    url: 'https://commons.wikimedia.org/wiki/File:Gagarin-Poyekhali.ogg',
+    category: 'archive',
+    covers: 'Аудиоклип «Поехали!» — голос Ю. А. Гагарина при старте.',
+  },
+  {
+    id: 26,
+    title: 'Архив звуковых записей Юрия Гагарина',
+    publisher: 'voicebot.su (educational use; копии записей РГАНТД, 1961)',
+    url: 'https://voicebot.su/en/category/yuri-gagarin/',
+    category: 'archive',
+    covers:
+      'Аудиоклипы для событий полёта: диалог Королёв–Гагарин на старте, доклады «Красота-то какая!», «Самочувствие хорошее», промежуточные сеансы связи, объявление Левитана о полёте.',
+  },
 ];
 
 /** Удобный поиск по id — например, для рендера сноски. */
