@@ -60,16 +60,16 @@ export default defineConfig({
       // Этап 3.2 — карта орбиты:
       'leaflet',
       'react-leaflet',
+      // Этап 3.3 — 3D-модель Восток-1:
+      'three',
+      '@react-three/fiber',
+      '@react-three/drei',
     ],
     // Тяжёлые пакеты, ещё не импортируемые в src/.
     // Исключаем из прогрева, чтобы Vite не сканировал их файлы
     // при каждом старте dev-сервера.
-    // - three / @react-three/* перенесём в include на шаге 3.3 (3D).
     // - tone установлен, но не используется (audio через HTMLAudioElement).
     exclude: [
-      'three',
-      '@react-three/fiber',
-      '@react-three/drei',
       'tone',
     ],
   },

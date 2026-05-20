@@ -1,6 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FLIGHT_FACTS } from '@/data/timeline';
+import { SHIP_MODULES, type ShipModule } from '@/data/vostok';
 import OrbitMap from '@/components/Technical/OrbitMap/OrbitMap';
+import ShipModel from '@/components/Technical/ShipModel/ShipModel';
+import ShipInfographic from '@/components/Technical/ShipInfographic/ShipInfographic';
+import InfoPanel from '@/components/Technical/ShipInfographic/InfoPanel';
+import SourceList from '@/components/Biography/SourceList';
+import { FootnoteList } from '@/components/Biography/Footnote';
 
 interface TechnicalSection {
   id: string;
@@ -106,10 +112,21 @@ export default function Technical() {
               <div className="accent-rule mt-4" />
             </header>
 
-            {s.id === 'orbit' ? <OrbitSection /> : <SectionStub index={SECTIONS.indexOf(s) + 2} />}
+            {s.id === 'orbit' ? (
+              <OrbitSection />
+            ) : s.id === 'ship' ? (
+              <ShipSection />
+            ) : s.id === 'device' ? (
+              <DeviceSection />
+            ) : (
+              <SectionStub index={SECTIONS.indexOf(s) + 2} />
+            )}
           </section>
         ))}
       </div>
+
+      {/* Источники — общий список с anchor-id, на которые ссылаются Footnote. */}
+      <SourceList />
     </div>
   );
 }
@@ -152,6 +169,107 @@ function OrbitSection() {
         установки (ТДУ) в районе T+78:34 над Африкой — далее корабль шёл по
         атмосферному участку траектории к деревне Смеловка.
       </p>
+    </div>
+  );
+}
+
+/**
+ * 3D-модель корабля + карточки 4 видимых модулей.
+ *
+ * Модули СК-1 и кресло-катапульта К-21 спрятаны внутри СА и в 3D не
+ * показываются — их раскрываем в подразделе 03.3 (SVG-инфографика).
+ */
+function ShipSection() {
+  // Идентификаторы модулей, которые реально видны в 3D-сцене.
+  const visibleIn3D: ReadonlyArray<string> = ['sa', 'po', 'tdu', 'antennas'];
+  const visibleModules = SHIP_MODULES.filter((m) =>
+    visibleIn3D.includes(m.id),
+  );
+
+  return (
+    <div className="mt-6 space-y-6">
+      {/* 3D-канвас */}
+      <ShipModel />
+
+      <p className="text-sm text-ink-soft">
+        Схематичная 3D-модель Восток-3КА из геометрических примитивов
+        (сфера, усечённый конус, цилиндры). Зажмите левую кнопку мыши и
+        двигайте курсор — корабль вращается; колёсиком регулируйте
+        масштаб. Подробное устройство корабля и его экипировка — в
+        следующем подразделе&nbsp;
+        <a
+          href="#device"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .getElementById('device')
+              ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }}
+          className="text-soviet-gold underline-offset-2 hover:underline"
+        >
+          03.3 «Устройство»
+        </a>
+        .
+      </p>
+
+      {/* Карточки модулей — описание каждой видимой в 3D подсистемы */}
+      <ul className="grid gap-4 sm:grid-cols-2">
+        {visibleModules.map((m) => (
+          <ModuleCard key={m.id} module={m} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** Карточка одного модуля корабля: аббревиатура, название, описание, сноски. */
+function ModuleCard({ module }: { module: ShipModule }) {
+  return (
+    <li className="rounded-lg border border-white/10 bg-space-mid/60 p-4">
+      <div className="flex items-baseline gap-2">
+        {module.abbr ? (
+          <span className="font-mono text-xs uppercase tracking-widest text-soviet-red">
+            {module.abbr}
+          </span>
+        ) : null}
+        <h3 className="font-display text-lg uppercase tracking-wide text-soviet-gold">
+          {module.name}
+        </h3>
+      </div>
+      <p className="mt-2 text-sm font-medium text-ink">
+        {module.shortDescription}
+      </p>
+      <p className="mt-2 text-sm text-ink-soft">
+        {module.longDescription}
+        <FootnoteList ids={module.sourceIds} />
+      </p>
+    </li>
+  );
+}
+
+/**
+ * Подраздел «Устройство»: SVG-инфографика + панель описания.
+ * По умолчанию выбран первый модуль (СА).
+ */
+function DeviceSection() {
+  const [selectedId, setSelectedId] = useState<string>(
+    SHIP_MODULES[0]?.id ?? 'sa',
+  );
+  const selected = SHIP_MODULES.find((m) => m.id === selectedId);
+
+  return (
+    <div className="mt-6 space-y-6">
+      <p className="text-sm text-ink-soft">
+        Шесть подсистем корабля Восток-3КА на интерактивной схеме. На
+        компактных экранах описание появляется под схемой; на десктопе —
+        справа. Скафандр СК-1 и кресло-катапульта К-21 раскрывают то,
+        что в 3D-модели спрятано внутри сферического СА.
+      </p>
+
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <ShipInfographic selectedId={selectedId} onSelect={setSelectedId} />
+        <InfoPanel module={selected} />
+      </div>
     </div>
   );
 }

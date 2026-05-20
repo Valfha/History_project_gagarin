@@ -23,6 +23,8 @@ dist-ssr
 /screen-*
 /error*.jpg
 /load_er*.jpg
+/map*.jpg
+/model*.jpg
 
 # Локальные дамп-файлы для переноса контекста между сессиями Devin
 SESSION_HANDOFF*.txt
