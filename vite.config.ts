@@ -49,7 +49,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    // Явный список реально используемых на текущих этапах (0-2) deps.
+    // Явный список реально используемых deps (этапы 0-3).
     // Vite пред-bundle их в node_modules/.vite/deps один раз и
     // переиспользует кэш между запусками.
     include: [
@@ -57,18 +57,19 @@ export default defineConfig({
       'react-dom',
       'react-dom/client',
       'react-router-dom',
+      // Этап 3.2 — карта орбиты:
+      'leaflet',
+      'react-leaflet',
     ],
-    // Тяжёлые пакеты Этапа 3 (ещё не импортируются нигде в src/).
-    // Исключаем из прогрева, чтобы Vite не сканировал тысячи файлов
-    // three.js / leaflet / tone при каждом старте dev-сервера.
-    // Когда мы начнём их импортировать в Этапе 3, нужно будет
-    // переместить эти id в `include`.
+    // Тяжёлые пакеты, ещё не импортируемые в src/.
+    // Исключаем из прогрева, чтобы Vite не сканировал их файлы
+    // при каждом старте dev-сервера.
+    // - three / @react-three/* перенесём в include на шаге 3.3 (3D).
+    // - tone установлен, но не используется (audio через HTMLAudioElement).
     exclude: [
       'three',
       '@react-three/fiber',
       '@react-three/drei',
-      'leaflet',
-      'react-leaflet',
       'tone',
     ],
   },
